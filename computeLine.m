@@ -6,7 +6,14 @@ function computeLine
 x = [2; 3; 1]
 y = [-4; 5; 1]
 
+figure(1)
+plot(x, 'b.')
+plot(y, 'b.')
+
 l = cross(x, y)
+
+figure(2)
+plot(l)
 
 translation = [1, 0, 6; 0, 1, -7; 0, 0, 1];
 phi = (15 * pi) / 180;
@@ -17,7 +24,14 @@ x_2 = scaling * rotation * translation * x
 
 y_2 = scaling * rotation * translation * y
 
+figure(3)
+plot(x_2, 'b.')
+plot(y_2, 'b.')
+
 l_2 = inv(scaling)' * inv(rotation)' * inv(translation)' * l
+
+figure(4)
+plot(l_2)
 
 a = x_2' * l_2
 b = y_2' * l_2
