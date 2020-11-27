@@ -29,7 +29,7 @@ function h = calculate_homography(p1, p2)
   # deconditioning
   h = inv(T2) * h * T1
   # TODO euclidization
-  h = 
+  %h = 
 endfunction
 
 
