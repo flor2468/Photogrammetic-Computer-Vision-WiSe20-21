@@ -29,8 +29,8 @@ endfunction
 
 function s = mean_dist(p, t)
   s = 0;
-  for x = p
-    s = s + abs(x - t);
+  for i = [1, 2, 3, 4]
+    s = s + abs(p(i) - t);
   endfor
-  s = 4/s; 
+  s = 4/s 
 endfunction
