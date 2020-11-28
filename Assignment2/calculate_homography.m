@@ -28,8 +28,6 @@ function h = calculate_homography(p1, p2)
   h = [hs(1), hs(2), hs(3); hs(4), hs(5), hs(6); hs(7), hs(8), hs(9)]
   # deconditioning
   h = inv(T2) * h * T1
-  # TODO euclidization
-  %h = 
 endfunction
 
 
