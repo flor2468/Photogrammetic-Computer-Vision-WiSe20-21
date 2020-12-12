@@ -9,7 +9,8 @@ im2 = imread('bilder/image_with_points.jpg', 'jpg');
 % 5.) [0, 0, 0]
 % 6.) [6.3, 0, 0]
 
-p1 = find_points(im1)
+p1 = find_points(im1);
+p1 = p1
 p2 = [0, 11.8, 9.4; 
       6.3, 11.8, 9.4; 
       0, 0, 9.4; 
