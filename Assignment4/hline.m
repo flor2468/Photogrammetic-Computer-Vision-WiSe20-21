@@ -2,9 +2,9 @@
 % ----------------------------------
 % function test                    
 % %        ====
- l = [-1 1 50]';                          % Line equation in implicit form
- f = imread('images/image1', 'jpg');                                   % Read image f
- figure, imshow(f), hold on                     % Show image in new window 
+ %l = [-1 1 50]';                          % Line equation in implicit form
+ %f = imread('images/image1', 'jpg');                                   % Read image f
+ %figure, imshow(f), hold on                     % Show image in new window 
  %hline(l);                                    % Draw red line l in image f
 
 function  h = hline(l, varargin)                       

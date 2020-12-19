@@ -1,14 +1,14 @@
-function e = geometricError(p1, p2, l1, l2)
-  
-  e = 0;
+function sum1 = geometricError(p1, p2, lines1, lines2)
+
+  sum1 = 0;
   
   for i = [1, 2, 3, 4, 5, 6, 7, 8]
     
-    z = p1(i,:)' * l2
-    z = z * z
-    n = l2(1)^2 + l2(2)^2 + l1(1)^2 + l1(2)^2
-    temp = z/n
-    e = e + temp
+    z = dot([p2(i,:),1], lines2(i,:)');
+    z = z^2;
+    n = lines2(i,1)^2 + lines2(i,2)^2 + lines1(i,1)^2 + lines1(i,2)^2;
+    e = z/n;
+    sum1 = sum1 + e;
     
   endfor
   
