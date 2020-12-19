@@ -22,10 +22,11 @@ function P = spatial_resection(p1, p2)
            [0, 0, 0, 0], -pa(3)*pb', pa(2)*pb'];
     A = [A;A_i];
   endfor
-  
+  A = A
+
   [U,S,V] = svd(A);
   r = V(:,12);
-  p = [r(1), r(2), r(3), r(4); r(5), r(6), r(7), r(8); r(9), r(10), r(11), r(12)];
+  p = [r(1), r(2), r(3), r(4); r(5), r(6), r(7), r(8); r(9), r(10), r(11), r(12)]
   P = inv(T1) * p * T2;
   
 endfunction

@@ -14,11 +14,13 @@ function F = norm8point(p1, p2)
   test2 = p1(:,1)'
   
   # algorithm
-  A = [(p1(:,1)' * diag(p2(:,1)))', (p1(:,2)' * diag(p2(:,1)))', p2(:,1),
-       (p1(:,1)' * diag(p2(:,2)))', (p1(:,2)' * diag(p2(:,2)))', p2(:,2),
-       p1(:,1), p1(:,2), ones(n,1)]
+  A = [(p1(:,1)' * diag(p2(:,1)))', (p1(:,2)' * diag(p2(:,1)))', p2(:,1), (p1(:,1)' * diag(p2(:,2)))', (p1(:,2)' * diag(p2(:,2)))', p2(:,2), p1(:,1), p1(:,2), ones(n,1)]
        
-  hs = linsolve(A, zeros(n,1))
+  # um A quadratisch zu machen, m�ssen wir eine Zeile erg�nzen
+  A =  [A; [0,0,0,0,0,0,0,0,0]]
+  [U,S,V] = svd(A)
+  # hs is the Eigenvector, V is transposed
+  hs = V(:,9)
   f = [hs(1), hs(2), hs(3); hs(4), hs(5), hs(6); hs(7), hs(8), hs(9)]
   
   # deconditioning
