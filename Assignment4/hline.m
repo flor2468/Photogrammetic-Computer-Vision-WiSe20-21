@@ -2,10 +2,10 @@
 % ----------------------------------
 % function test                    
 % %        ====
-% l = [-1 1 50]';                          % Line equation in implicit form
-% f = imread('image.jpg');                                   % Read image f
-% figure, imshow(f), hold on                     % Show image in new window 
-% hline(l);                                    % Draw red line l in image f
+ l = [-1 1 50]';                          % Line equation in implicit form
+ f = imread('images/image1', 'jpg');                                   % Read image f
+ figure, imshow(f), hold on                     % Show image in new window 
+ %hline(l);                                    % Draw red line l in image f
 
 function  h = hline(l, varargin)                       
 %        ==================
@@ -22,3 +22,8 @@ function  h = hline(l, varargin)
 	x2 = x2 / x2(3);
 	h = line([x1(1) x2(1)], [x1(2) x2(2)], varargin{:});
 end
+
+ %l = [-1 1 50]';                          % Line equation in implicit form
+ %f = imread('images/image1', 'jpg');                                   % Read image f
+ %figure, imshow(f), hold on                     % Show image in new window 
+ hline(l);  

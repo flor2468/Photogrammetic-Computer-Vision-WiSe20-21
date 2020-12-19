@@ -8,7 +8,7 @@ F = norm8point(p1, p2)
 % epipolar lines
 
 subplot(1, 2, 1);
-figure, imshow(im1), hold on
+imshow(im1), hold on
 
 for i = [1, 2, 3, 4, 5, 6, 7, 8]
   
@@ -17,10 +17,10 @@ for i = [1, 2, 3, 4, 5, 6, 7, 8]
 
 endfor
 
-hold off
+%hold off
 
 subplot(1, 2, 2);
-figure, imshow(im2), hold on   
+imshow(im2), hold on   
   
 for i = [1, 2, 3, 4, 5, 6, 7, 8]
  
@@ -29,4 +29,22 @@ for i = [1, 2, 3, 4, 5, 6, 7, 8]
   
 endfor
 
-hold off
+%hold off
+
+%TESTS
+
+%l1 = F' * [p2(1,:),1]'
+%l2 = F * [p1(1,:),1]'
+
+% so funktioniert es fuer l:
+%l = [-1 1 50]'
+%im1 = imread('images/image1', 'jpg');
+%figure, imshow(im1), hold on
+%hline(l)
+
+%TODO: fix the errors
+%e = geometricError(p1, p2, l1, l2)
+
+
+
+
