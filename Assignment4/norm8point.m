@@ -1,4 +1,4 @@
-function F = norm8points(p1, p2)
+function F = norm8point(p1, p2)
   
   n = 8;
   
@@ -10,9 +10,12 @@ function F = norm8points(p1, p2)
   T1 = [1/s1(1) ,0, - t1(1)/s1(1); 0, 1/s1(2), - t1(2)/s1(2); 0, 0, 1]
   T2 = [1/s2(1) ,0, - t2(1)/s2(1); 0, 1/s2(2), - t2(2)/s2(2); 0, 0, 1]
   
+  test1 = p1(:,1)
+  test2 = p1(:,1)'
+  
   # algorithm
-  A = [p1(:,1) * diag(p2(:,1)), p1(:,2) * diag(p2(:,1)), p2(:,1),
-       p1(:,1) * diag(p2(:,2)), p1(:,2) * diag(p2(:,2)), p2(:,2),
+  A = [(p1(:,1)' * diag(p2(:,1)))', (p1(:,2)' * diag(p2(:,1)))', p2(:,1),
+       (p1(:,1)' * diag(p2(:,2)))', (p1(:,2)' * diag(p2(:,2)))', p2(:,2),
        p1(:,1), p1(:,2), ones(n,1)]
        
   hs = linsolve(A, zeros(n,1))
