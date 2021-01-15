@@ -10,7 +10,12 @@ F = norm8point(p1, p2);
 
 [PN, P_] = calculateProjection(F)
 
-linearTriangulation(p1, p2, PN, P_)
+XP1 = linearTriangulation(p1, p2, PN, P_, 8)
+
+[p3, p4, X] = read_control_points('pp.dat');
+
+
+XP2 = linearTriangulation(p3, p4, PN, P_, 5)
 
 % epipolar lines
 %subplot(1, 2, 1);

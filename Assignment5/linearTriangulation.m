@@ -1,9 +1,10 @@
-function linearTriangulation(p1, p2, PN, P_)
+function XP = linearTriangulation(p1, p2, PN, P_, n)
   P = PN;
   A = [];
-  XP1 = [];
+  XP = [];
   
-  for i = [1, 2, 3, 4, 5, 6, 7, 8]
+  %for i = [1, 2, 3, 4, 5, 6, 7, 8]
+  for i = 1:n
     A = [p1(i, 1) * (P(3,:) - P(1,:));
          p1(i, 2) * (P(3,:) - P(2,:));
          p2(i, 1) * (P_(3,:) - P_(1,:));
@@ -22,12 +23,12 @@ function linearTriangulation(p1, p2, PN, P_)
     
     X = X
     
-    XP1 = [XP1; X']
+    XP = [XP; X']
     
   endfor
   
   figure;
-  scatter3(XP1(:,1), XP1(:,2), XP1(:,3), 10, 'filled');
+  scatter3(XP(:,1), XP(:,2), XP(:,3), 10, 'filled');
   axis square;  
   view(32, 75);
   
