@@ -1,7 +1,3 @@
-%im1 = imread('images/image1', 'jpg');
-%im2 = imread('images/image2', 'jpg');
-
-%[p1, p2] = find_points(im1, im2);
 
 [p1, p2, P1, P2] = read_points('bh.dat');
 
