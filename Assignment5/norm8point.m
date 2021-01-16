@@ -1,6 +1,9 @@
 function F = norm8point(p1, p2)
   
   n = 8;
+  p1 = [p1, [1, 1, 1, 1, 1, 1, 1, 1]'];
+  p2 = [p2, [1, 1, 1, 1, 1, 1, 1, 1]'];
+  
   
   # conditioning
   t1 = [mean(p1(:,1)), mean(p1(:,2))]
@@ -13,19 +16,22 @@ function F = norm8point(p1, p2)
 %  test1 = p1(:,1)
 %  test2 = p1(:,1)'
   
-  cp1 = [];
-  cp2 = [];
+  cp1 = T1 * p1';
+  cp2 = T2 * p2';
   
-  for i = [1, 2, 3, 4, 5, 6, 7, 8]
+  %for i = [1, 2, 3, 4, 5, 6, 7, 8]
     
-    cp1 = [cp1; [T1 * [p1(i,:),1]']']; 
-    cp2 = [cp2; [T2 * [p2(i,:),1]']'];
+  %  cp1 = [cp1; [T1 * [p1(i,:),1]']']; 
+  %  cp2 = [cp2; [T2 * [p2(i,:),1]']'];
   
-  endfor
+  %endfor
   
   # algorithm
-  A = [(cp1(:,1)' * diag(cp2(:,1)))', (cp1(:,2)' * diag(cp2(:,1)))', cp2(:,1), (cp1(:,1)' * diag(cp2(:,2)))', (cp1(:,2)' * diag(cp2(:,2)))', cp2(:,2), cp1(:,1), cp1(:,2), ones(n,1)]
-       
+  # A = [(cp1(:,1)' * diag(cp2(:,1)))', (cp1(:,2)' * diag(cp2(:,1)))', cp2(:,1), (cp1(:,1)' * diag(cp2(:,2)))', (cp1(:,2)' * diag(cp2(:,2)))', cp2(:,2), cp1(:,1), cp1(:,2), ones(n,1)]
+  A = [];
+  for i = 1 : size(cp1, 2)
+    A = [ A; cp2(1, i)*cp1(:, i)' cp2(2, i)*cp1(:, i)' cp2(3, i)*cp1(:, i)' ];
+  end     
   # um A quadratisch zu machen, muessen wir eine Zeile erguenzen
   A =  [A; [0,0,0,0,0,0,0,0,0]]
   [U,S,V] = svd(A)
@@ -33,6 +39,12 @@ function F = norm8point(p1, p2)
   hs = V(:,9)
   f = [hs(1), hs(2), hs(3); hs(4), hs(5), hs(6); hs(7), hs(8), hs(9)]
   
+  [U, D, V] = svd(f);                            
+  % Singular value decomposition
+  D(3, 3) = 0;        
+  % Smallest singular value must be 0
+  f = U * D * V';                                          
+  % Recompose matrices
   # deconditioning
   F = T2' * f * T1
 endfunction
